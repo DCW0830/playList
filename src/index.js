@@ -6,7 +6,8 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list'
 import VideoDetail from './components/video_detail'
 import NewPlayList from './components/newPlayList'
-const API_KEY = 'AIzaSyBP2eoo8oCiraVL4qLAh25i-qOGOKqHz3o';
+import API_KEY from './.API.js'
+
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,13 @@ class App extends Component {
       playList: updatedPlaylist
     })
   }
-  
+
+  addToPlaylist = (video) => {
+    this.setState({
+      playList: [...this.state.playList, video]
+    })
+  }
+
   videoSearch(term) {
     YTSearch({key: API_KEY, term: term}, (videos) => {
       this.setState({
@@ -43,7 +50,7 @@ class App extends Component {
         <SearchBar delayedSearch={delayedSearch} />
         {this.state.playList[0]? <NewPlayList handleDelete={this.handleDelete} playList={this.state.playList}/>:null}
 
-        <VideoDetail addToPlaylist={video=>this.setState({playList:[...this.state.playList, video]})}
+        <VideoDetail addToPlaylist={this.addToPlaylist}
           video={this.state.selectedVideo}
         />
         <VideoList
