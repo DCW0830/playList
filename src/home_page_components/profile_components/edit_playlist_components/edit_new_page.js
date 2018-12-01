@@ -18,9 +18,10 @@ class EditNewPage extends Component {
     this.videoSearch('')
   }
 
-  createThePlaylist = (event, playlistName) => {
-    event.preventDefault()
-    console.log(playlistName)
+  createThePlaylist = (playlistName) => {
+    let theCreatedPlaylist = {[playlistName]: this.state.playlist}
+    this.props.getCreatedPlaylist(theCreatedPlaylist)
+    this.setState({playlist: []})
   }
 
 
@@ -52,7 +53,9 @@ class EditNewPage extends Component {
         <SearchBar delayedSearch={delayedSearch} />
         {this.state.playlist[0]? <NewPlaylist
          createThePlaylist={this.createThePlaylist}
-         handleDelete={this.handleDelete} playlist={this.state.playlist}/>:null}
+         handleDelete={this.handleDelete}
+         playlist={this.state.playlist}
+        />:null}
 
         <VideoDetail addToPlaylist={this.addToPlaylist}
           video={this.state.selectedVideo}
@@ -61,6 +64,8 @@ class EditNewPage extends Component {
           onVideoSelect={selectedVideo=>this.setState({selectedVideo})}
           videos={this.state.videos}
         />
+
+        <button onClick={this.props.toggle}> back to profile page </button>
       </div>
     );
   }

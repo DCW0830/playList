@@ -7,6 +7,12 @@ class NewPlaylist extends Component {
     playlistName: ''
   }
 
+  handleSubmit = (event) =>{
+    event.preventDefault()
+    this.props.createThePlaylist(this.state.playlistName)
+    this.setState({playlistName: ''})
+  }
+
   createPlaylistItems = () => {
     return this.props.playlist.map(videoObj => {
       return <PlaylistItems handleDelete={this.props.handleDelete} key={videoObj.etag} videoObj={videoObj} />
@@ -16,7 +22,7 @@ class NewPlaylist extends Component {
   render() {
     return (
       <div>
-        <form >
+        <form  >
           <label>
             Playlist Name:
             <input onChange={(event)=> this.setState({playlistName: event.target.value})} value={this.state.playlistName} type="text" name="name" />
@@ -24,8 +30,7 @@ class NewPlaylist extends Component {
           <ul className= "col-md-4 list-group">
             {this.createPlaylistItems()}
           </ul>
-          <input onClick={(event)=>this.props.createThePlaylist(this.state.playlistName)}
-            type="submit" value="CreatePlaylist"
+          <input onClick={this.handleSubmit} type="submit" value="CreatePlaylist"
           />
         </form>
       </div>
