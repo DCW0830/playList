@@ -10,7 +10,7 @@
 /build
 
 # misc
-src/.API.js
+src/home_page_components/profile_components/edit_playlist_components/.API.js
 .DS_Store
 .env.local
 .env.development.local
