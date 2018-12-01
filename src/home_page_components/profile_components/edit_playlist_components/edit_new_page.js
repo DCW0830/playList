@@ -3,7 +3,7 @@ import _ from 'lodash'
 import SearchBar from './search_bar';
 import VideoList from './video_list'
 import VideoDetail from './video_detail'
-import NewPlayList from './newPlayList'
+import NewPlaylist from './new_playlist'
 import YTSearch from 'youtube-api-search';
 import API_KEY from './.API.js'
 
@@ -13,21 +13,28 @@ class EditNewPage extends Component {
     this.state={
       videos: [],
       selectedVideo: null,
-      playList: []
+      playlist: []
     }
     this.videoSearch('')
   }
+
+  createThePlaylist = (event, playlistName) => {
+    event.preventDefault()
+    console.log(playlistName)
+  }
+
+
   handleDelete = (etag) => {
-    let updatedPlaylist = this.state.playList.filter(videoObj=> {
+    let updatedPlaylist = this.state.playlist.filter(videoObj=> {
       return videoObj.etag !== etag
     })
     this.setState({
-      playList: updatedPlaylist
+      playlist: updatedPlaylist
     })
   }
   addToPlaylist = (video) => {
     this.setState({
-      playList: [...this.state.playList, video]
+      playlist: [...this.state.playlist, video]
     })
   }
   videoSearch(term) {
@@ -43,7 +50,9 @@ class EditNewPage extends Component {
     return (
       <div>
         <SearchBar delayedSearch={delayedSearch} />
-        {this.state.playList[0]? <NewPlayList handleDelete={this.handleDelete} playList={this.state.playList}/>:null}
+        {this.state.playlist[0]? <NewPlaylist
+         createThePlaylist={this.createThePlaylist}
+         handleDelete={this.handleDelete} playlist={this.state.playlist}/>:null}
 
         <VideoDetail addToPlaylist={this.addToPlaylist}
           video={this.state.selectedVideo}

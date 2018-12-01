@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlayListItems = ({videoObj, handleDelete}) => {
+const PlaylistItems = ({videoObj, handleDelete}) => {
   const imageUrl = videoObj.snippet.thumbnails.default.url
 
   return (
@@ -17,4 +17,4 @@ const PlayListItems = ({videoObj, handleDelete}) => {
   )
 }
 
-export default PlayListItems
+export default PlaylistItems

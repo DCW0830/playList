@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import ProfilePage from './profile_components/profile_page'
 
+
+
 class HomePage extends Component {
 
   state = {
-    profilePage: false
+    profilePage: false,
+    createdPlaylists: {}
   }
 
   render() {
