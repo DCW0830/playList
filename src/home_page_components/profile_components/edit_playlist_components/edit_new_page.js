@@ -19,7 +19,7 @@ class EditNewPage extends Component {
   }
 
   createThePlaylist = (playlistName) => {
-    let theCreatedPlaylist = {[playlistName]: this.state.playlist}
+    let theCreatedPlaylist = {name: playlistName, playlist: this.state.playlist}
     this.props.getCreatedPlaylist(theCreatedPlaylist)
     this.setState({playlist: []})
   }
@@ -55,7 +55,7 @@ class EditNewPage extends Component {
          createThePlaylist={this.createThePlaylist}
          handleDelete={this.handleDelete}
          playlist={this.state.playlist}
-        />:null}
+        /> : null}
 
         <VideoDetail addToPlaylist={this.addToPlaylist}
           video={this.state.selectedVideo}
