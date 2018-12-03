@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import API_URL from '../Constants/backend_url.js'
 
 export default class SignIn extends Component {
   state = {
@@ -13,7 +14,8 @@ export default class SignIn extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     let body = this.state.returningUser ? {user: {name: this.state.username, password: this.state.pw} } : {user: {name: this.state.username, password: this.state.pw, password_confirmation: this.state.pwConfirmation} }
-    fetch(`http://localhost:3000/api/v1/users`,
+
+    fetch(API_URL.users,
       {method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(body)})
