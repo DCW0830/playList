@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProfilePage from './profile_components/profile_page'
 import SignIn from './signin.js'
+import EditNewPage from './profile_components/edit_playlist_components/edit_new_page.js'
 
 
 
@@ -18,7 +19,7 @@ class HomePage extends Component {
       pageIndex:index
     })
   }
-  
+
   setUser = (id, playlists) => this.setState({loggedInUserID: id, createdPlaylists: playlists,pageIndex: 1})
 
   renderCorrectPage(){
@@ -26,9 +27,9 @@ class HomePage extends Component {
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        return <ProfilePage upatePageIndex={this.updatePageIndex}/>
+        return <ProfilePage updatePageIndex={this.updatePageIndex}/>
       case 2:
-        return <h1> Render Playlist New/Edit Page</h1>
+        return <EditNewPage updatePageIndex={this.updatePageIndex}/>
       case 3:
         return <h1> Render Party Page</h1>
       default:

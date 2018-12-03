@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button"
 
 
 
@@ -42,6 +43,7 @@ class ProfilePage extends Component {
         >
 
         <Grid item  sm={4}>
+        <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
           <Card>
              <CardHeader title="Playlists Card"/>
              <Paper style={{height:350}}/>
