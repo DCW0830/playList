@@ -14,6 +14,7 @@ export default class SignIn extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     let body = this.state.returningUser ? {user: {name: this.state.username, password: this.state.pw} } : {user: {name: this.state.username, password: this.state.pw, password_confirmation: this.state.pwConfirmation} }
+
     fetch(API_URL.users,
       {method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -21,7 +22,7 @@ export default class SignIn extends Component {
     .then(res => res.json())
     .then(res => {
       if (res.status === 500) {res.errors.forEach(error => window.alert(error))}
-      else {this.props.setUser(res.user.id, res.playlists)}})
+      else {this.props.setUser(res.user,res.user.id, res.user.user_playlists)}})
   }
 
   handleChange = (event) => {
