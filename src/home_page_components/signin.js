@@ -21,10 +21,7 @@ export default class SignIn extends Component {
     .then(res => res.json())
     .then(res => {
       if (res.status === 500) {res.errors.forEach(error => window.alert(error))}
-      else {
-        debugger
-        this.props.setUser(res.user.id, res.playlists)}
-    })
+      else {this.props.setUser(res.user.id, res.playlists)}})
   }
 
   handleChange = (event) => {
