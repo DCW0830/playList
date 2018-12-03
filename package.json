@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.6.1",
     "lodash": "^4.17.11",
     "modern-scripts": "2.2.0",
     "react": "^16.6.0",

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import EditNewPage from './edit_playlist_components/edit_new_page'
 import UsersPlLIst from './user_pl_list'
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from "@material-ui/core/styles";
+
 
 
 class ProfilePage extends Component {
@@ -25,19 +31,40 @@ class ProfilePage extends Component {
   }
 
   render() {
-    
+
 
     return (
-      <div>
-        {this.state.editNewPage?<EditNewPage toggle={this.toggle} getCreatedPlaylist={this.getCreatedPlaylist}/>:
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        style={{minWidth:"100vh"},{minHeight:"100vh"}}
+        spacing={16}
+        >
 
-        <div onClick={this.toggle}>
-          This is the Profile Page, click me to go to the new and edit playlist page
-          <div>
-            <UsersPlLIst thePlaylists={this.state.thePlaylists}/>
-          </div>
-        </div>}
-      </div>
+        <Grid item  sm={4}>
+          <Card>
+             <CardHeader title="Playlists Card"/>
+             <Paper style={{height:350}}/>
+          </Card>
+        </Grid>
+        <Grid item  xs={6}>
+          <Card >
+             <CardHeader title="Main Card" style={{ textAlign: 'center' }}/>
+             <Paper style={{height:350}}/>
+          </Card>
+        </Grid>
+        <Grid item  xs={2}>
+          <Card>
+             <CardHeader title="Stats"/>
+             <Paper style={{height:350}}/>
+          </Card>
+        </Grid>
+
+
+
+      </Grid>
 
     )
   }
