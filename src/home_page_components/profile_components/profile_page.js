@@ -31,10 +31,11 @@ class ProfilePage extends Component {
   }
 
   renderPlaylists = (playlists) =>{
+    debugger
     return(
       playlists.map(playlist =>{
         return(
-        <Card>
+        <Card key={`pl_${playlist.id}`}>
           <CardHeader title={playlist.title} style={{ textAlign: 'center' }} />
         </Card>)
       })
@@ -42,6 +43,7 @@ class ProfilePage extends Component {
   }
 
   render() {
+    debugger
     return (
       <Grid
         container

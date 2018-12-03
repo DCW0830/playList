@@ -18,7 +18,7 @@ class HomePage extends Component {
   updatePageIndex = index => this.setState({pageIndex:index})
 
   setUser = (user,id, playlists) => {
-    let newState = playlists ? {currentUser:user,loggedInUserID: id, createdPlaylists: [...this.state.createdPlaylists, playlists],pageIndex: 1} : {currentUser:user,loggedInUserID: id, pageIndex: 1}
+    let newState = playlists ? {currentUser:user,loggedInUserID: id, createdPlaylists: [...this.state.createdPlaylists, ...playlists],pageIndex: 1} : {currentUser:user,loggedInUserID: id, pageIndex: 1}
     this.setState(newState)
   }
 
@@ -38,7 +38,7 @@ class HomePage extends Component {
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-
+        debugger
         return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} updatePageIndex={this.updatePageIndex}/>
 
       case 2:
