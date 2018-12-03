@@ -20,11 +20,11 @@ class EditNewPage extends Component {
   }
 
   createThePlaylist = (playlistName) => {
-    let theCreatedPlaylist = {name: playlistName, playlist: this.state.playlist}
-    this.props.getCreatedPlaylist(theCreatedPlaylist)
+    let playlist = {title: playlistName, playlist: this.state.playlist}
+    this.props.addPlaylist(playlist)
+    debugger
     this.setState({playlist: []})
   }
-
 
   handleDelete = (etag) => {
     let updatedPlaylist = this.state.playlist.filter(videoObj=> {
@@ -34,11 +34,13 @@ class EditNewPage extends Component {
       playlist: updatedPlaylist
     })
   }
+
   addToPlaylist = (video) => {
     this.setState({
       playlist: [...this.state.playlist, video]
     })
   }
+
   videoSearch(term) {
     YTSearch({key: API_KEY, term: term}, (videos) => {
       this.setState({
@@ -47,6 +49,7 @@ class EditNewPage extends Component {
        })
     });
   }
+
   render() {
     const delayedSearch = _.debounce(term =>{this.videoSearch(term)}, 300)
     return (
@@ -66,7 +69,7 @@ class EditNewPage extends Component {
           videos={this.state.videos}
         />
 
-        <button onClick={this.props.toggle}> back to profile page </button>
+        <button onClick={() => this.props.updatePageIndex(1)}> back to profile page </button>
       </div>
     );
   }
