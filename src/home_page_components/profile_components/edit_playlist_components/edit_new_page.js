@@ -7,6 +7,7 @@ import NewPlaylist from './new_playlist'
 import YTSearch from 'youtube-api-search';
 import API_KEY from './.API.js'
 
+
 class EditNewPage extends Component {
   constructor(props) {
     super(props)
@@ -19,7 +20,8 @@ class EditNewPage extends Component {
   }
 
   createThePlaylist = (playlistName) => {
-    let theCreatedPlaylist = {[playlistName]: this.state.playlist}
+    let theCreatedPlaylist = {name: playlistName, playlist: this.state.playlist}
+    console.log(theCreatedPlaylist)
     this.props.getCreatedPlaylist(theCreatedPlaylist)
     this.setState({playlist: []})
   }
