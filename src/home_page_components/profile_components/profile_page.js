@@ -19,15 +19,13 @@ class ProfilePage extends Component {
   }
 
   toggle = () => {
-    let theSwitch = this.state.editNewPage
-    theSwitch = !theSwitch
-    this.setState({editNewPage: theSwitch})
+    this.setState({editNewPage: !this.state.editNewPage})
   }
 
   getCreatedPlaylist = (playlist) => {
     this.setState({
       thePlaylists: [...this.state.thePlaylists, playlist]
-    }, ()=> console.log(this.state.thePlaylists))
+    })
   }
 
   render() {

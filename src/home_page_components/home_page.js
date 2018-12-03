@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import ProfilePage from './profile_components/profile_page'
+import SignIn from './signin.js'
 
 
 
 class HomePage extends Component {
 
   state = {
+
     pageIndex: 0,
-    createdPlaylists: {}
+    createdPlaylists: [],
+    loggedInUserID: null
   }
 
   updatePageIndex = (index) =>{
@@ -15,11 +18,13 @@ class HomePage extends Component {
       pageIndex:index
     })
   }
+  
+  setUser = (id, playlists) => this.setState({loggedInUserID: id, createdPlaylists: playlists,pageIndex: 1})
 
   renderCorrectPage(){
     switch(this.state.pageIndex){
       case 0:
-        return <div onClick={() => this.updatePageIndex(1)}>Click Me to Sign In</div>
+        return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
         return <ProfilePage upatePageIndex={this.updatePageIndex}/>
       case 2:
