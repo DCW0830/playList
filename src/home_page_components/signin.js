@@ -12,7 +12,7 @@ export default class SignIn extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    let body = this.state.returningUser ? {user: {name: this.state.username, pw: this.state.pw} } : {user: {name: this.state.username, password: this.state.pw, password_confirmation: this.state.pwConfirmation} }
+    let body = this.state.returningUser ? {user: {name: this.state.username, password: this.state.pw} } : {user: {name: this.state.username, password: this.state.pw, password_confirmation: this.state.pwConfirmation} }
     debugger
     fetch(`http://localhost:3000/api/v1/users`,
       {method: "POST",
