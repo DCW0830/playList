@@ -5,7 +5,8 @@ const Playlist = (props) => {
   return (
     <li className='list-group-item'>
       <div  className="left">
-        props.playlistObj.name
+        {props.playlistObj.name}
+        <button>Edit</button>
       </div>
     </li>
   )

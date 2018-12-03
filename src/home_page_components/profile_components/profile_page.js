@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditNewPage from './edit_playlist_components/edit_new_page'
 import UsersPlLIst from './user_pl_list'
 
+
 class ProfilePage extends Component {
   constructor(props) {
     super(props)
@@ -22,6 +23,8 @@ class ProfilePage extends Component {
   }
 
   render() {
+    
+
     return (
       <div>
         {this.state.editNewPage?<EditNewPage toggle={this.toggle} getCreatedPlaylist={this.getCreatedPlaylist}/>:
