@@ -29,15 +29,26 @@ export default class SignIn extends Component {
   render () {
     return (
         <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>Username</label>
-            <input type="text" value={this.state.username} onChange={this.handleChange} name="username"/>
+          <form className='ui form' onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label>Username</label>
+              <input type="text" value={this.state.username} onChange={this.handleChange} name="username"/>
+            </div>
+
             <label>Password</label>
-            <input type="Password" value={this.state.pw} onChange={this.handleChange} name="pw"/>
+            <input type="Password"
+              value={this.state.pw}
+              onChange={this.handleChange}
+              name="pw"
+            />
             {this.state.returningUser ? <><label>Password Confirmation</label>
-            <input type="Password" value={this.state.pwConfirmation} onChange={this.handleChange} name="pwConfirmation"/></> : null}
+
+            <input type="Password"
+              value={this.state.pwConfirmation} onChange={this.handleChange}
+              name="pwConfirmation"/></> : null}
             <input type="submit" value="Sign In!"></input>
           </form>
+
           {!this.state.returningUser ? <button onClick={this.toggleNewUser}>New User?</button> : null}
         </div>
     )
