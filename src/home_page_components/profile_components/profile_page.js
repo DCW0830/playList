@@ -46,6 +46,7 @@ class ProfilePage extends Component {
         <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
           <Card>
              <CardHeader title="Playlists Card"/>
+             {this.props.playlists[0] ? this.props.playlists.map(pl => <p>{pl.title}</p>) : <p>No playlists yet....</p>}
              <Paper style={{height:350}}/>
           </Card>
         </Grid>

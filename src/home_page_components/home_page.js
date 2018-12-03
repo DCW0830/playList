@@ -16,7 +16,10 @@ class HomePage extends Component {
 
   updatePageIndex = index => this.setState({pageIndex:index})
 
-  setUser = (id, playlists) => this.setState({loggedInUserID: id, createdPlaylists: [...this.state.createdPlaylists, playlists], pageIndex: 1})
+  setUser = (id, playlists) => {
+    let newState = playlists ? {loggedInUserID: id, createdPlaylists: [...this.state.createdPlaylists, playlists], pageIndex: 1, pageIndex: 1} : {loggedInUserID: id, pageIndex: 1}
+    this.setState(newState)
+  }
 
   addPlaylist = playlist => {
     playlist.user_id = this.state.loggedInUserID
@@ -24,18 +27,15 @@ class HomePage extends Component {
     {method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({playlist: playlist})})
-    .then(res => res.json())
-    .then(pl =>{
-      debugger
-    })
-    this.setState({createdPlaylists: [...this.state.createdPlaylists, playlist]})}
+    this.setState({createdPlaylists: [...this.state.createdPlaylists, playlist]}, () => console.log(this.state.createdPlaylists))
+  }
 
   renderCorrectPage(){
     switch(this.state.pageIndex){
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        return <ProfilePage updatePageIndex={this.updatePageIndex} playlists={this.state.palylists}/>
+        return <ProfilePage updatePageIndex={this.updatePageIndex} playlists={this.state.createdPlaylists}/>
       case 2:
         return <EditNewPage updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist}/>
       case 3:
