@@ -8,11 +8,11 @@ class HomePage extends Component {
 
   state = {
     profilePage: false,
-    createdPlaylists: {},
+    createdPlaylists: [],
     loggedInUserID: null
   }
 
-  setUser = id => this.setState({loggedInUserID: id})
+  setUser = (id, playlists) => this.setState({loggedInUserID: id, createdPlaylists: playlists })
 
   render() {
     return (
