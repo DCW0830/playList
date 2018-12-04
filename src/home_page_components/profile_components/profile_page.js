@@ -61,7 +61,9 @@ class ProfilePage extends Component {
         <Grid item  xs={6}>
           <Card >
              <CardHeader title="Party Time" style={{ textAlign: 'center' }}/>
-             <Paper style={{height:350}}/>
+             <Paper style={{height:350}}>
+               <Button onClick={() => this.props.updatePageIndex(3)}>Party Time!!</Button>
+             </Paper>
           </Card>
         </Grid>
         <Grid item  xs={2}>
