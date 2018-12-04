@@ -14,8 +14,8 @@ class NewPlaylist extends Component {
   }
 
   createPlaylistItems = () => {
-    return this.props.playlist.map(videoObj => {
-      return <PlaylistItems handleDelete={this.props.handleDelete} key={videoObj.etag} videoObj={videoObj} />
+    return this.props.playlist.map(video => {
+      return <PlaylistItems handleDelete={this.props.handleDelete} key={video.etag} video={video} />
     })
   }
 

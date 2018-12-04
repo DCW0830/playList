@@ -9,16 +9,37 @@ import Typography from "@material-ui/core/Typography"
 import API_URL from '../../Constants/backend_url.js'
 
 class ProfilePage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      editNewPage: false,
+      thePlaylists: []
+    }
+  }
 
-  renderPlaylists = (playlists) =>{
+  toggle = () => {
+    this.setState({editNewPage: !this.state.editNewPage})
+  }
+
+  getCreatedPlaylist = (playlist) => {
+    this.setState({
+      thePlaylists: [...this.state.thePlaylists, playlist]
+    })
+  }
+
+  renderPlaylists = (playlists) => {
     return(
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
+<<<<<<< HEAD
           <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} />
           <center>
             <Button onClick={()=>this.props.handleDelete(playlist.id)}>Delete</Button>
           </center>
+=======
+          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} onClick={ this.props.onClickPlaylist}/>
+>>>>>>> d1a50e56d614e504a4bf3cbfb27dd5cdc0a4b06b
         </Card>)
       })
     )
@@ -38,16 +59,18 @@ class ProfilePage extends Component {
         <Grid item  sm={4}>
           <Card>
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
-             <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
-             <Paper style={{height:325}}>
-               {this.props.user.user_playlists === [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
+             <Button onClick={() => this.props.generateBlankPlaylist()}>Create New Playlist</Button>
+             <Paper style={{minHeight : 325, maxHeight : 325, overflow: 'auto'}}>
+               {this.props.user.user_playlists == [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
              </Paper>
           </Card>
         </Grid>
         <Grid item  xs={6}>
           <Card >
              <CardHeader title="Party Time" style={{ textAlign: 'center' }}/>
-             <Paper style={{height:350}}/>
+             <Paper style={{height:350}}>
+               <Button onClick={() => this.props.updatePageIndex(3)}>Party Time!!</Button>
+             </Paper>
           </Card>
         </Grid>
         <Grid item  xs={2}>
