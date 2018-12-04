@@ -55,7 +55,7 @@ class HomePage extends Component {
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} generateBlankPlaylist={this.generateBlankPlaylist} onClickPlaylist={this.onClickPlaylist} updatePageIndex={this.updatePageIndex}/>
+        return <ProfilePage handleDelete={this.handleDelete} user={this.state.currentUser} playlists={this.state.createdPlaylists} generateBlankPlaylist={this.generateBlankPlaylist} onClickPlaylist={this.onClickPlaylist} updatePageIndex={this.updatePageIndex}/>
 
       case 2:
         return <EditNewPage key={this.state.selectedPlaylistId} updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist} videos={this.state.selectedPlaylistId ? this.state.createdPlaylists.find(pl => pl.id == this.state.selectedPlaylistId).songsInPlaylist.map(vid => vid.video) : []}/>
