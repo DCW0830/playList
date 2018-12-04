@@ -4,8 +4,6 @@ import SignIn from './signin.js'
 import EditNewPage from './profile_components/edit_playlist_components/edit_new_page.js'
 import API_URL from '../Constants/backend_url.js'
 
-
-
 class HomePage extends Component {
 
   state = {
@@ -22,6 +20,16 @@ class HomePage extends Component {
     this.setState(newState)
   }
 
+  handleDelete = (id) => {
+    console.log(id)
+    let filtered = this.state.createdPlaylists.filter(playlistObj => {
+      return playlistObj.id !== id
+    })
+    this.setState({createdPlaylists: filtered})
+    fetch(`${API_URL.playlists}/${id}`,
+    {method: "DELETE"})
+  }
+
   addPlaylist = playlist => {
     playlist.user_id = this.state.loggedInUserID
     fetch(API_URL.playlists,
@@ -34,14 +42,12 @@ class HomePage extends Component {
     })
   }
 
-
   renderCorrectPage(){
-
     switch(this.state.pageIndex){
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} updatePageIndex={this.updatePageIndex}/>
+        return <ProfilePage handleEdit={this.handleEdit} handleDelete={this.handleDelete} user={this.state.currentUser} playlists={this.state.createdPlaylists} updatePageIndex={this.updatePageIndex}/>
       case 2:
         return <EditNewPage updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist}/>
       case 3:
@@ -58,8 +64,6 @@ class HomePage extends Component {
       <div>
         {this.renderCorrectPage()}
       </div>
-
-
     )
   }
 }
