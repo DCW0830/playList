@@ -9,13 +9,17 @@ import Typography from "@material-ui/core/Typography"
 import API_URL from '../../Constants/backend_url.js'
 
 class ProfilePage extends Component {
-  
+
   renderPlaylists = (playlists) =>{
     return(
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
           <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} />
+          <center>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </center>
         </Card>)
       })
     )
@@ -61,7 +65,6 @@ class ProfilePage extends Component {
           </Card>
         </Grid>
       </Grid>
-
     )
   }
 }
