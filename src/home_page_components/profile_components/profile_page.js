@@ -12,6 +12,7 @@ class ProfilePage extends Component {
 
   renderPlaylists = (playlists) =>{
     return(
+      debugger
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
@@ -40,7 +41,7 @@ class ProfilePage extends Component {
           <Card>
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
              <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
-             <Paper style={{height:325}}>
+             <Paper style={{minHeight: 325, maxHeight: 325, overflow: 'auto'}}>
                {this.props.user.user_playlists === [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
              </Paper>
           </Card>
