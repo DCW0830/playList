@@ -32,13 +32,12 @@ class ProfilePage extends Component {
     })
   }
 
-
-  renderPlaylists = (playlists) =>{
+  renderPlaylists = (playlists) => {
     return(
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
-          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} />
+          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} onClick={ this.props.onClickPlaylist}/>
         </Card>)
       })
     )
@@ -58,7 +57,7 @@ class ProfilePage extends Component {
         <Grid item  sm={4}>
           <Card>
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
-             <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
+             <Button onClick={() => this.props.generateBlankPlaylist()}>Create New Playlist</Button>
              <Paper style={{height:325}}>
                {this.props.user.user_playlists == [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
              </Paper>

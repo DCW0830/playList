@@ -12,10 +12,13 @@ class HomePage extends Component {
     pageIndex: 0,
     createdPlaylists:[],
     loggedInUserID: null,
-    currentUser: {name:"No Name"}
+    currentUser: {name:"No Name"},
+    selectedPlaylistId: null
   }
 
-  updatePageIndex = index => this.setState({pageIndex:index})
+  updatePageIndex = index => this.setState({pageIndex:index}, () => console.log(this.state.createdPlaylists))
+
+  generateBlankPlaylist = () => this.setState({selectedPlaylistId: null, pageIndex: 2})
 
   setUser = (user,id, playlists) => {
     let newState = playlists ? {currentUser:user,loggedInUserID: id, createdPlaylists: [...this.state.createdPlaylists, ...playlists],pageIndex: 1} : {currentUser:user,loggedInUserID: id, pageIndex: 1}
@@ -34,16 +37,16 @@ class HomePage extends Component {
     })
   }
 
+  onClickPlaylist = event => this.setState({selectedPlaylistId: event.currentTarget.id}, () => this.updatePageIndex(2))
 
   renderCorrectPage(){
-
     switch(this.state.pageIndex){
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} updatePageIndex={this.updatePageIndex}/>
+        return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} generateBlankPlaylist={this.generateBlankPlaylist} onClickPlaylist={this.onClickPlaylist}/>
       case 2:
-        return <EditNewPage updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist}/>
+        return <EditNewPage key={this.state.selectedPlaylistId} updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist} videos={this.state.selectedPlaylistId ? this.state.createdPlaylists.find(pl => pl.id == this.state.selectedPlaylistId).songsInPlaylist : []}/>
       case 3:
         return <h1> Render Party Page</h1>
       default:

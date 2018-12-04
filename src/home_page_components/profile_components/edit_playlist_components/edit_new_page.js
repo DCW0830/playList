@@ -14,7 +14,7 @@ class EditNewPage extends Component {
     this.state={
       videos: [],
       selectedVideo: null,
-      playlist: []
+      playlist: this.props.videos
     }
     this.videoSearch('')
   }

@@ -1,17 +1,17 @@
 import React from 'react'
 
-const PlaylistItems = ({videoObj, handleDelete}) => {
-  const imageUrl = videoObj.snippet.thumbnails.default.url
+const PlaylistItems = ({video: {video}, handleDelete}) => {
+  const imageUrl = video.snippet.thumbnails.default.url
 
   return (
     <li className='list-group-item'>
       <div  className="media-right">
-        <img className="media-object" alt={videoObj.snippet.title} src={imageUrl} />
-        <button onClick={()=>handleDelete(videoObj.etag)}>Remove</button>
+        <img className="media-object" alt={video.snippet.title} src={imageUrl} />
+        <button onClick={()=>handleDelete(video.etag)}>Remove</button>
       </div>
 
       <div className="media-body">
-        <div className="media-heading">{videoObj.snippet.title}</div>
+        <div className="media-heading">{video.snippet.title}</div>
       </div>
     </li>
   )
