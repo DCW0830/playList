@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import EditNewPage from './edit_playlist_components/edit_new_page'
-import UsersPlLIst from './user_pl_list'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -8,31 +6,10 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
-
 import API_URL from '../../Constants/backend_url.js'
 
-
-
 class ProfilePage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      editNewPage: false,
-      thePlaylists: []
-    }
-  }
-
-  toggle = () => {
-    this.setState({editNewPage: !this.state.editNewPage})
-  }
-
-  getCreatedPlaylist = (playlist) => {
-    this.setState({
-      thePlaylists: [...this.state.thePlaylists, playlist]
-    })
-  }
-
-
+  
   renderPlaylists = (playlists) =>{
     return(
       playlists.map(playlist =>{
@@ -60,7 +37,7 @@ class ProfilePage extends Component {
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
              <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
              <Paper style={{height:325}}>
-               {this.props.user.user_playlists == [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
+               {this.props.user.user_playlists === [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
              </Paper>
           </Card>
         </Grid>
@@ -83,9 +60,6 @@ class ProfilePage extends Component {
              </Paper>
           </Card>
         </Grid>
-
-
-
       </Grid>
 
     )
