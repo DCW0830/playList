@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import EditNewPage from './edit_playlist_components/edit_new_page'
-import UsersPlLIst from './user_pl_list'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -8,12 +6,10 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
-
 import API_URL from '../../Constants/backend_url.js'
 
-
-
 class ProfilePage extends Component {
+<<<<<<< HEAD
   constructor(props) {
     super(props)
     this.state = {
@@ -33,11 +29,24 @@ class ProfilePage extends Component {
   }
 
   renderPlaylists = (playlists) => {
+=======
+
+  renderPlaylists = (playlists) =>{
+>>>>>>> df9fc83525d595ebf8cd78c506bcecfe0e751da4
     return(
+      debugger
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
+<<<<<<< HEAD
           <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} onClick={ this.props.onClickPlaylist}/>
+=======
+          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} />
+          <center>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </center>
+>>>>>>> df9fc83525d595ebf8cd78c506bcecfe0e751da4
         </Card>)
       })
     )
@@ -57,9 +66,15 @@ class ProfilePage extends Component {
         <Grid item  sm={4}>
           <Card>
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
+<<<<<<< HEAD
              <Button onClick={() => this.props.generateBlankPlaylist()}>Create New Playlist</Button>
              <Paper style={{height:325}}>
                {this.props.user.user_playlists == [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
+=======
+             <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
+             <Paper style={{minHeight: 325, maxHeight: 325, overflow: 'auto'}}>
+               {this.props.user.user_playlists === [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
+>>>>>>> df9fc83525d595ebf8cd78c506bcecfe0e751da4
              </Paper>
           </Card>
         </Grid>
@@ -82,11 +97,7 @@ class ProfilePage extends Component {
              </Paper>
           </Card>
         </Grid>
-
-
-
       </Grid>
-
     )
   }
 }

@@ -22,7 +22,6 @@ class EditNewPage extends Component {
   createThePlaylist = (playlistName) => {
     let playlist = {title: playlistName, playlist: this.state.playlist}
     this.props.addPlaylist(playlist)
-    debugger
     this.setState({playlist: []})
   }
 
