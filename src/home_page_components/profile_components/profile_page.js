@@ -33,6 +33,10 @@ class ProfilePage extends Component {
         return(
         <Card key={`pl_${playlist.id}`}>
           <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} onClick={ this.props.onClickPlaylist}/>
+            <center>
+              <Button onClick={()=>this.props.handleDelete(playlist.id)}>Delete</Button>
+            </center>
+
         </Card>)
       })
     )
