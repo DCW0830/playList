@@ -21,7 +21,6 @@ export default class SignIn extends Component {
       body: JSON.stringify(body)})
     .then(res => res.json())
     .then(res => {
-      debugger
       if (res.status === 500) {res.errors.forEach(error => window.alert(error))}
       else {this.props.setUser(res.user,res.user.id, res.user.user_playlists)}})
   }

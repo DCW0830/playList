@@ -9,6 +9,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 
+import API_URL from '../../Constants/backend_url.js'
+
 
 
 class ProfilePage extends Component {
@@ -30,19 +32,19 @@ class ProfilePage extends Component {
     })
   }
 
+
   renderPlaylists = (playlists) =>{
     return(
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
-          <CardHeader title={playlist.title} style={{ textAlign: 'center' }} />
+          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} />
         </Card>)
       })
     )
   }
 
   render() {
-    debugger
     return (
       <Grid
         container
@@ -55,17 +57,11 @@ class ProfilePage extends Component {
 
         <Grid item  sm={4}>
           <Card>
-<<<<<<< HEAD
-             <CardHeader title="Playlists Card"/>
-             {this.props.playlists[0] ? this.degbugr() : <p>No playlists yet....</p>}
-             <Paper style={{height:350}}/>
-=======
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
              <Button onClick={() => this.props.updatePageIndex(2)}>Create New Playlist</Button>
              <Paper style={{height:325}}>
                {this.props.user.user_playlists == [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
              </Paper>
->>>>>>> 58ec9c594c205a6de12894a0e784f192ec4e3db1
           </Card>
         </Grid>
         <Grid item  xs={6}>

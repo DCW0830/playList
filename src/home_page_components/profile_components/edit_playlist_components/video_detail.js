@@ -12,9 +12,6 @@ const VideoDetail = ({video, addToPlaylist}) => {
       <div className="embed-responsive embed-responsive-16by9">
         <iframe className="embed-responsive-item" title={video.snippet.title} src={url}></iframe>
       </div>
-      <div className="details">
-        <div>{video.snippet.description}</div>
-      </div>
       <div className="button">
         <br/>
           <button onClick={()=> addToPlaylist(video)}>Add to Playlist</button>
@@ -24,3 +21,8 @@ const VideoDetail = ({video, addToPlaylist}) => {
 }
 
 export default VideoDetail
+
+// {video: {id: {videoId: "CIWUEHCWEUFH(FH@#RY@(C*F))"},
+//         snippet: {title: "Cool Song"}
+//         }
+// }

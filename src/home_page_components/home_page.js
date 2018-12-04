@@ -28,7 +28,10 @@ class HomePage extends Component {
     {method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({playlist: playlist})})
-    this.setState({createdPlaylists: [...this.state.createdPlaylists, playlist]}, () => console.log(this.state.createdPlaylists))
+    .then(res => res.json())
+    .then(playlist => {
+      this.setState({createdPlaylists: [playlist, ...this.state.createdPlaylists]})
+    })
   }
 
 
@@ -38,9 +41,7 @@ class HomePage extends Component {
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        debugger
         return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} updatePageIndex={this.updatePageIndex}/>
-
       case 2:
         return <EditNewPage updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist}/>
       case 3:
