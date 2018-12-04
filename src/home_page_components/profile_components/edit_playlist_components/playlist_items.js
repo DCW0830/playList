@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlaylistItems = ({video: {video}, handleDelete}) => {
+const PlaylistItems = ({video, handleDelete}) => {
   const imageUrl = video.snippet.thumbnails.default.url
 
   return (

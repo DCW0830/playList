@@ -14,7 +14,6 @@ class NewPlaylist extends Component {
   }
 
   createPlaylistItems = () => {
-    debugger
     return this.props.playlist.map(video => {
       return <PlaylistItems handleDelete={this.props.handleDelete} key={video.etag} video={video} />
     })

@@ -46,7 +46,7 @@ class HomePage extends Component {
       case 1:
         return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} generateBlankPlaylist={this.generateBlankPlaylist} onClickPlaylist={this.onClickPlaylist}/>
       case 2:
-        return <EditNewPage key={this.state.selectedPlaylistId} updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist} videos={this.state.selectedPlaylistId ? this.state.createdPlaylists.find(pl => pl.id == this.state.selectedPlaylistId).songsInPlaylist : []}/>
+        return <EditNewPage key={this.state.selectedPlaylistId} updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist} videos={this.state.selectedPlaylistId ? this.state.createdPlaylists.find(pl => pl.id == this.state.selectedPlaylistId).songsInPlaylist.map(vid => vid.video) : []}/>
       case 3:
         return <h1> Render Party Page</h1>
       default:
