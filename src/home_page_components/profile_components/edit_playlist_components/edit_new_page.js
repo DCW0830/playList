@@ -56,6 +56,7 @@ class EditNewPage extends Component {
         <SearchBar delayedSearch={delayedSearch} />
         {this.state.playlist[0]? <NewPlaylist
          createThePlaylist={this.createThePlaylist}
+         onVideoSelect={selectedVideo=>this.setState({selectedVideo})}
          handleDelete={this.handleDelete}
          playlist={this.state.playlist}
         /> : null}
