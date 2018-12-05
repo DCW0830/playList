@@ -30,9 +30,9 @@ class NewPlaylist extends Component {
           <ul className= "col-md-4 list-group">
             {this.createPlaylistItems()}
           </ul>
-          <input onClick={this.handleSubmit} type="submit" value="CreatePlaylist"
-          />
+          <input onClick={this.handleSubmit} type="submit" value="CreatePlaylist"/>
         </form>
+        <button onClick={this.props.handlePlayAll}>Play All</button>
       </div>
     )
   }

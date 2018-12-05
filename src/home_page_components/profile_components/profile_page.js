@@ -36,7 +36,6 @@ class ProfilePage extends Component {
             <center>
               <Button onClick={()=>this.props.handleDelete(playlist.id)}>Delete</Button>
             </center>
-
         </Card>)
       })
     )

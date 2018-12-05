@@ -1,16 +1,25 @@
 import React from 'react'
 
-const VideoDetail = ({video, addToPlaylist}) => {
+const VideoDetail = ({playAll, video, addToPlaylist, playAllIdsUrl}) => {
   if (!video) {
     return <div>Loading...</div>
   }
 
   const videoId = video.id.videoId
-  const url = `https://www.youtube.com/embed/${videoId}`
+  let url = `https://www.youtube.com/embed/${videoId}`
+
   return (
     <div className="video-detail col-md-8">
+      <center><h2>Playlist Player</h2></center>
       <div className="embed-responsive embed-responsive-16by9">
-        <iframe className="embed-responsive-item" title={video.snippet.title} src={url}></iframe>
+
+        <iframe className="embed-responsive-item" title={video.snippet.title}  src={playAllIdsUrl}></iframe>
+      </div>
+      <br/>
+      <center><h2>Selected Video Player</h2></center>
+      <div className="embed-responsive embed-responsive-16by9">
+
+        <iframe className="embed-responsive-item" title={video.snippet.title}  src={url}></iframe>
       </div>
       <div className="button">
         <br/>
@@ -21,8 +30,3 @@ const VideoDetail = ({video, addToPlaylist}) => {
 }
 
 export default VideoDetail
-
-// {video: {id: {videoId: "CIWUEHCWEUFH(FH@#RY@(C*F))"},
-//         snippet: {title: "Cool Song"}
-//         }
-// }

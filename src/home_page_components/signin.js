@@ -26,7 +26,7 @@ export default class SignIn extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value}, () => console.log(this.state.username, this.state.pw, this.state.pwConfirmation))
+    this.setState({[event.target.name]: event.target.value})
   }
 
   render () {
