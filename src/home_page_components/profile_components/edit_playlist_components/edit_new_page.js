@@ -5,7 +5,7 @@ import VideoList from './video_list'
 import VideoDetail from './video_detail'
 import NewPlaylist from './new_playlist'
 import YTSearch from 'youtube-api-search';
-import API_KEY from './.api.js'
+import API_KEY from './.API.js'
 
 
 class EditNewPage extends Component {
@@ -69,7 +69,7 @@ class EditNewPage extends Component {
           videos={this.state.videos}
         />
 
-        <button onClick={() => this.props.updatePageIndex(1)}> back to profile page </button>
+        <button onClick={() => this.props.redirect_to("home")}> back to profile page </button>
       </div>
     );
   }
