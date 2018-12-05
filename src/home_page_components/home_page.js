@@ -4,6 +4,7 @@ import PartyPage from './profile_components/party_page'
 import SignIn from './signin.js'
 import EditNewPage from './profile_components/edit_playlist_components/edit_new_page.js'
 import API_URL from '../Constants/backend_url.js'
+import { ActionCableProvider } from 'react-actioncable-provider'
 
 
 
@@ -59,9 +60,11 @@ class HomePage extends Component {
 
   render() {
     return (
+      <ActionCableProvider url={"ws://localhost:3000/cable"}>
       <div>
         {this.renderCorrectPage()}
       </div>
+    </ActionCableProvider>
 
 
     )

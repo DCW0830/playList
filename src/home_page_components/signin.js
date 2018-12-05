@@ -1,6 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import API_URL from '../Constants/backend_url.js'
 
+import CardHeader from '@material-ui/core/CardHeader';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button"
+import Typography from "@material-ui/core/Typography"
+
 export default class SignIn extends Component {
   state = {
     username: "",
