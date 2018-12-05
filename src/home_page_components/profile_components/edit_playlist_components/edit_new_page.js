@@ -5,7 +5,7 @@ import VideoList from './video_list'
 import VideoDetail from './video_detail'
 import NewPlaylist from './new_playlist'
 import YTSearch from 'youtube-api-search';
-import API_KEY from './.api.js'
+import API_KEY from './.API.js'
 
 
 class EditNewPage extends Component {
