@@ -4,6 +4,7 @@ import PartyPage from './profile_components/party_page'
 import SignIn from './signin.js'
 import EditNewPage from './profile_components/edit_playlist_components/edit_new_page.js'
 import API_URL from '../Constants/backend_url.js'
+import { ActionCableProvider } from 'react-actioncable-provider'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 
@@ -54,6 +55,7 @@ class HomePage extends Component {
 
   render() {
     return (
+      <ActionCableProvider url={"ws://localhost:3000/cable"}>
       <div>
         <Switch>
           <Route exact path="/" render={props => <Redirect to="/signin"/>}/>
@@ -63,6 +65,8 @@ class HomePage extends Component {
           <Route path="/party" render={props => <p>Party Page</p>}/>
         </Switch>
       </div>
+      </ActionCableProvider>
+
     )
   }
 }

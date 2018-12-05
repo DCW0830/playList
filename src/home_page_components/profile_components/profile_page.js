@@ -8,6 +8,18 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import API_URL from '../../Constants/backend_url.js'
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: red,
+    secondary: {
+      main: '#03DAC6',
+    },
+  },
+});
+
 class ProfilePage extends Component {
   constructor(props) {
     super(props)
@@ -32,11 +44,11 @@ class ProfilePage extends Component {
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
-          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} onClick={ this.props.onClickPlaylist}/>
+          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }}/>
             <center>
-              <Button onClick={()=>this.props.handleDelete(playlist.id)}>Delete</Button>
+              <Button color="primary" onClick={ this.props.onClickPlaylist} >Edit </Button>
+              <Button color="secondary" onClick={()=>this.props.handleDelete(playlist.id)}>Delete</Button>
             </center>
-
         </Card>)
       })
     )
@@ -56,7 +68,7 @@ class ProfilePage extends Component {
         <Grid item  sm={4}>
           <Card>
              <CardHeader title="Playlists" style={{ textAlign: 'center' }}/>
-             <Button onClick={() => this.props.generateBlankPlaylist()}>Create New Playlist</Button>
+             <Button color="primary" onClick={() => this.props.generateBlankPlaylist()}>Create New Playlist</Button>
              <Paper style={{minHeight : 325, maxHeight : 325, overflow: 'auto'}}>
                {this.props.user.user_playlists == [] ? "No Playlists Created" : this.renderPlaylists(this.props.playlists)}
              </Paper>
