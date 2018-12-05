@@ -6,8 +6,6 @@ import EditNewPage from './profile_components/edit_playlist_components/edit_new_
 import API_URL from '../Constants/backend_url.js'
 import { ActionCableProvider } from 'react-actioncable-provider'
 
-
-
 class HomePage extends Component {
 
   state = {
@@ -27,6 +25,16 @@ class HomePage extends Component {
     this.setState(newState)
   }
 
+  handleDelete = (id) => {
+    console.log(id)
+    let filtered = this.state.createdPlaylists.filter(playlistObj => {
+      return playlistObj.id !== id
+    })
+    this.setState({createdPlaylists: filtered})
+    fetch(`${API_URL.playlists}/${id}`,
+    {method: "DELETE"})
+  }
+
   addPlaylist = playlist => {
     playlist.user_id = this.state.loggedInUserID
     fetch(API_URL.playlists,
@@ -39,14 +47,17 @@ class HomePage extends Component {
     })
   }
 
+
   onClickPlaylist = event => this.setState({selectedPlaylistId: event.currentTarget.id}, () => this.updatePageIndex(2))
+
 
   renderCorrectPage(){
     switch(this.state.pageIndex){
       case 0:
         return <SignIn setUser={this.setUser} updatePageIndex = {this.updatePageIndex}/>
       case 1:
-        return <ProfilePage user={this.state.currentUser} playlists={this.state.createdPlaylists} generateBlankPlaylist={this.generateBlankPlaylist} onClickPlaylist={this.onClickPlaylist} updatePageIndex={this.updatePageIndex}/>
+        return <ProfilePage handleDelete={this.handleDelete} user={this.state.currentUser} playlists={this.state.createdPlaylists} generateBlankPlaylist={this.generateBlankPlaylist} onClickPlaylist={this.onClickPlaylist} updatePageIndex={this.updatePageIndex}/>
+
       case 2:
         return <EditNewPage key={this.state.selectedPlaylistId} updatePageIndex={this.updatePageIndex} addPlaylist={this.addPlaylist} videos={this.state.selectedPlaylistId ? this.state.createdPlaylists.find(pl => pl.id == this.state.selectedPlaylistId).songsInPlaylist.map(vid => vid.video) : []}/>
       case 3:
@@ -64,8 +75,7 @@ class HomePage extends Component {
       <div>
         {this.renderCorrectPage()}
       </div>
-    </ActionCableProvider>
-
+      </ActionCableProvider>
 
     )
   }

@@ -44,9 +44,17 @@ class ProfilePage extends Component {
       playlists.map(playlist =>{
         return(
         <Card key={`pl_${playlist.id}`}>
+<<<<<<< HEAD
           <Button variant="contained" color="secondary" fullWidth={true} id={playlist.id}  onClick={ this.props.onClickPlaylist}>
             {playlist.title}
           </Button>
+=======
+          <CardHeader id={playlist.id} title={playlist.title} style={{ textAlign: 'center' }} onClick={ this.props.onClickPlaylist}/>
+            <center>
+              <Button onClick={()=>this.props.handleDelete(playlist.id)}>Delete</Button>
+            </center>
+
+>>>>>>> 8941d07ba3b0b4270fc555600980bda4c75d9ab0
         </Card>)
       })
     )
